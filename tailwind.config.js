@@ -3,6 +3,12 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      container: {
+        center: true,
+        screens: {
+          DEFAULT: '80rem',
+        },
+      },
       colors: {
         background: '#030616',
         foreground: '#f2f5f9',
@@ -13,7 +19,7 @@ export default {
         },
       },
       borderRadius: {
-        DEFAULT: '1.25rem',
+        DEFAULT: '0.8rem',
       },
     },
   },
