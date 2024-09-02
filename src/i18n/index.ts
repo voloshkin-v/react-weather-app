@@ -7,7 +7,6 @@ import { localStorageKeys, languages } from '@/constants';
 i18n.use(initReactI18next).init({
   resources,
   lng: localStorage.getItem(localStorageKeys.i18n) ?? languages.en,
-  debug: true,
   interpolation: {
     escapeValue: false,
   },

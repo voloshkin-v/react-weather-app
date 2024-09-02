@@ -1,6 +1,6 @@
 import { apiClient } from '@/api/client';
-import type { LocationWeatherAPI } from '@/api/types';
-import type { Lang, Location, Unit } from '@/types';
+import type { LocationCoordsAPI, LocationWeatherAPI } from '@/api/types';
+import type { Lang, Unit } from '@/types';
 
 class LocationService {
   async getWeather(params: { lat: number; lon: number; units: Unit; lang: Lang }) {
@@ -12,23 +12,57 @@ class LocationService {
   }
 
   async getCoordsByName(location: string) {
-    const { data } = await apiClient.get<Location[]>('/geo/1.0/direct', {
+    const { data } = await apiClient.get<LocationCoordsAPI[]>('/geo/1.0/direct', {
       params: {
         q: location,
         limit: 3,
       },
     });
 
-    return data;
+    return this.#transformCoords(data);
   }
 
   async getLocationByCoords(params: { lat: number; lon: number }) {
-    const { data } = await apiClient.get<Location[]>('/geo/1.0/reverse', {
+    const { data } = await apiClient.get<LocationCoordsAPI[]>('/geo/1.0/reverse', {
       params,
     });
 
-    return data;
+    return this.#transformCoords(data);
   }
+
+  #transformCoords = (data: LocationCoordsAPI[]) => {
+    return data.map((coords) => {
+      const { local_names, ...rest } = coords;
+
+      return {
+        ...rest,
+        localNames: {
+          en: coords.local_names?.en || null,
+          uk: coords.local_names?.uk || null,
+        },
+      };
+    });
+
+    return data.map((coords) => ({
+      ...coords,
+      localNames: {
+        en: coords.local_names?.en || null,
+        uk: coords.local_names?.uk || null,
+      },
+    }));
+    // const { local_names, ...rest } = coords;
+    // console.log(rest);
+
+    // return {
+    //   ...rest,
+    //   // ...coords,
+    //   localNames: {
+    //     en: coords.local_names?.en || null,
+    //     uk: coords.local_names?.uk || null,
+    //   },
+    // };
+    // });
+  };
 
   #transformWeather = (data: LocationWeatherAPI) => {
     return {

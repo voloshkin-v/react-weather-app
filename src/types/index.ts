@@ -1,8 +1,8 @@
-import { languages } from '@/constants';
+import { languages, units } from '@/constants';
 
-export type Unit = 'metric' | 'imperial';
 export type Status = 'idle' | 'pending' | 'success' | 'error';
 export type Lang = keyof typeof languages;
+export type Unit = keyof typeof units;
 
 export interface Weather {
   lat: number;
@@ -25,8 +25,8 @@ export interface Weather {
 
 export interface Location {
   name: string;
-  local_names?: {
-    [key: string]: string;
+  localNames: {
+    [key: string]: string | null;
   };
   lat: number;
   lon: number;

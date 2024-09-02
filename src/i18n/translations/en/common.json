@@ -2,5 +2,8 @@
   "otherCities": "Other large cities",
   "geolocateButton": "Geolocate me",
   "feelLike": "Feel like",
-  "nothingFound": "Nothing found"
+  "nothingFound": "Nothing found",
+  "localNotAvailable": "Local name is not available",
+  "to": "to",
+  "m/s": "m/s"
 }

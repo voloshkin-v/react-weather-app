@@ -4,6 +4,39 @@
 
 @layer base {
   html {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Fira Code', system-ui;
   }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* react-select styles */
+.select__control {
+  @apply !cursor-pointer !rounded !border-transparent !bg-secondary !ring-1 ring-transparent ring-offset-2 ring-offset-background hover:!bg-secondary/80 active:!bg-secondary/60;
+}
+.select__value-container {
+  @apply !py-[3px];
+}
+.select__input-container {
+  @apply !text-foreground;
+}
+.select__control--is-focused {
+  @apply ring-foreground;
+}
+.select__single-value {
+  @apply !text-foreground;
+}
+.select__menu {
+  @apply !bg-secondary;
+}
+.select__option {
+  @apply !cursor-pointer !text-foreground;
+}
+.select__option--is-focused {
+  @apply !bg-foreground/15;
+}
+.select__option--is-selected {
+  @apply !bg-foreground !text-background;
 }

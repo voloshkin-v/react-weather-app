@@ -1,29 +1,20 @@
-import Search from './components/Search';
-import UnitToggle from './components/UnitToggle';
-import CurrentWeather from './components/CurrentWeather';
+import Header from '@/components/Header/Header';
+import WeatherView from '@/components/Weather/WeatherView';
 
-import data from './mock/data.json';
+import { useWeather } from '@/context/Weather';
 
 const App = () => {
-  return (
-    <div className="min-h-svh bg-background text-foreground">
-      <header className="flex items-center justify-between p-4">
-        <Search />
-        <UnitToggle />
-      </header>
+  const { status } = useWeather();
 
-      <main className="p-4">
-        <div className="grid grid-cols-[20rem_1fr] gap-9">
-          <div>
-            <CurrentWeather
-              location="Warsaw"
-              minTemperature={1}
-              maxTemperature={2}
-              current={data.current}
-              timeZone="Europe/Kyiv"
-            />
-          </div>
-        </div>
+  return (
+    <div className="flex min-h-svh flex-col">
+      <Header />
+
+      <main className="container flex-1 p-4">
+        {status === 'idle' && <p>Intro</p>}
+        {status === 'pending' && <p>Loading...</p>}
+        {status === 'error' && <p>Error</p>}
+        {status === 'success' && <WeatherView />}
       </main>
     </div>
   );

@@ -2,5 +2,8 @@
   "otherCities": "Інші великі міста",
   "geolocateButton": "Моя локація",
   "feelLike": "Відчувається як",
-  "nothingFound": "Нічого не знайдено"
+  "localNotAvailable": "Назва відсутня",
+  "nothingFound": "Нічого не знайдено",
+  "to": "до",
+  "m/s": "м/с"
 }

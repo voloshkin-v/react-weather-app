@@ -1,60 +1,39 @@
-import { useUnit } from '../context/UnitProvider';
+import { Location, Unit, Weather } from '@/types';
+import WeatherIcon from '@/components/Weather/WeatherIcon';
+import { useTranslation } from 'react-i18next';
+import { units } from '@/constants';
 
 interface Props {
-  current: {
-    dt: number;
-    sunrise: number;
-    sunset: number;
-    temp: number;
-    feels_like: number;
-    pressure: number;
-    humidity: number;
-    dew_point: number;
-    uvi: number;
-    clouds: number;
-    visibility: number;
-    wind_speed: number;
-    wind_deg: number;
-    wind_gust: number;
-    weather: {
-      id: number;
-      main: string;
-      description: string;
-      icon: string;
-    }[];
-  };
-  location: string;
-  minTemperature: number;
-  maxTemperature: number;
+  current: Weather['current'];
+  unit: Unit;
+  locationName: Location['localNames'];
   timeZone: string;
 }
 
-const CurrentWeather = ({ location, current, minTemperature, maxTemperature, timeZone }: Props) => {
-  const { unit } = useUnit();
+const CurrentWeather = ({ current, locationName, timeZone, unit }: Props) => {
+  const { t, i18n } = useTranslation();
 
-  const { temp, weather, feels_like, wind_speed } = current;
-  const [{ description, icon }] = weather;
-
-  console.log(
-    new Intl.DateTimeFormat('en-US', {
-      timeZone,
-    }).format(new Date()),
-  );
+  const {
+    temp: { max, min, now },
+    feelsLike,
+    windSpeed,
+    weather: { description, icon },
+  } = current;
 
   return (
     <article className="w-full rounded bg-secondary p-5">
       <header className="flex justify-between gap-10">
-        <p className="text-5xl font-medium">{temp}°</p>
+        <p className="text-5xl font-medium">{now}°</p>
 
         <div className="text-right">
-          <h1 className="text-2xl">{location}</h1>
+          <h1 className="text-2xl">{locationName[i18n.language]}</h1>
           <time className="block text-xs" dateTime="">
             11:45 AM
           </time>
         </div>
       </header>
 
-      <ul className="mt-3 grid grid-cols-2 items-center text-sm font-extralight text-secondary-foreground">
+      <ul className="mt-3 grid grid-cols-[2fr_1fr] items-center text-sm font-extralight text-secondary-foreground">
         <li className="flex items-center">
           <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" className="w-12" />
           {description}
@@ -62,16 +41,16 @@ const CurrentWeather = ({ location, current, minTemperature, maxTemperature, tim
 
         <li className="text-right">
           <p className="font-normal text-foreground">
-            {wind_speed} {unit === 'metric' ? 'm/s' : 'mi/h'}
+            {windSpeed} {t('common.m/s')}
           </p>
         </li>
 
         <li>
-          Feel like: {feels_like} °{unit === 'metric' ? 'C' : 'F'}
+          {t('common.feelLike')}: {feelsLike} {units[unit].label}
         </li>
 
         <li className="text-right">
-          {minTemperature}° to {maxTemperature}°
+          {min}° {t('common.to')} {max}°
         </li>
       </ul>
     </article>

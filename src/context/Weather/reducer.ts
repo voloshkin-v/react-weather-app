@@ -4,6 +4,7 @@ export const actions = {
   unitChanged: 'UNIT_CHANGED',
   dataReceived: 'DATA_RECEIVED',
   locationSelected: 'LOCATION_SELECTED',
+  locationRemoved: 'LOCATION_REMOVED',
   statusChanged: 'STATUS_CHANGED',
 } as const;
 
@@ -11,6 +12,10 @@ export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case actions.locationSelected: {
       return { ...state, location: action.location };
+    }
+
+    case actions.locationRemoved: {
+      return { ...state, status: 'idle', location: null, weather: null };
     }
 
     case actions.statusChanged: {
@@ -43,4 +48,5 @@ export type Action =
   | { type: typeof actions.locationSelected; location: Location | null }
   | { type: typeof actions.statusChanged; status: Status }
   | { type: typeof actions.dataReceived; weather: Weather }
-  | { type: typeof actions.unitChanged; unit: Unit };
+  | { type: typeof actions.unitChanged; unit: Unit }
+  | { type: typeof actions.locationRemoved };
