@@ -3,7 +3,7 @@ import type { LocationWeatherAPI } from '@/api/types';
 import type { Lang, Location, Unit } from '@/types';
 
 class LocationService {
-  async getWeather(params: { lat: number; lon: number; unit: Unit; lang: Lang }) {
+  async getWeather(params: { lat: number; lon: number; units: Unit; lang: Lang }) {
     const { data } = await apiClient.get<LocationWeatherAPI>('/data/3.0/onecall', {
       params,
     });
