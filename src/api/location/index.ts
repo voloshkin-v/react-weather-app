@@ -32,6 +32,7 @@ class LocationService {
 
   #transformCoords = (data: LocationCoordsAPI[]) => {
     return data.map((coords) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { local_names, ...rest } = coords;
 
       return {
@@ -42,26 +43,6 @@ class LocationService {
         },
       };
     });
-
-    return data.map((coords) => ({
-      ...coords,
-      localNames: {
-        en: coords.local_names?.en || null,
-        uk: coords.local_names?.uk || null,
-      },
-    }));
-    // const { local_names, ...rest } = coords;
-    // console.log(rest);
-
-    // return {
-    //   ...rest,
-    //   // ...coords,
-    //   localNames: {
-    //     en: coords.local_names?.en || null,
-    //     uk: coords.local_names?.uk || null,
-    //   },
-    // };
-    // });
   };
 
   #transformWeather = (data: LocationWeatherAPI) => {
@@ -82,7 +63,6 @@ class LocationService {
           description: data.current.weather.at(0)!.description,
         },
       },
-      // TODO
     };
   };
 }
