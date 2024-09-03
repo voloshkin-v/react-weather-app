@@ -5,10 +5,10 @@ import SearchLocation from '@/components/Header/SearchLocation';
 
 const Header = () => {
   return (
-    <header className="flex items-center gap-10 p-4">
+    <header className="flex flex-wrap items-center gap-4 p-4 md:flex-nowrap">
       <SearchLocation />
 
-      <div className="flex items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4 md:flex-nowrap">
         <GeolocateButton />
         <UnitToggle />
         <LangSelect />

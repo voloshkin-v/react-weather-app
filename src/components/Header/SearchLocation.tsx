@@ -33,9 +33,12 @@ const SearchLocation = () => {
     <AppAsyncSelect
       className="w-full"
       value={location}
+      openMenuOnClick={false}
+      placeholder={t('common.searchPlaceholder')}
       onChange={handleChange}
       loadOptions={(inputValue) => locationService.getCoordsByName(inputValue)}
       noOptionsMessage={() => t('common.nothingFound')}
+      loadingMessage={() => t('common.loading')}
       formatOptionLabel={formatOptionLabel}
       getOptionValue={(option) => `${option.lat}-${option.lon}`}
       classNamePrefix="select"
