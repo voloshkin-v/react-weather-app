@@ -1,16 +1,16 @@
 import { Location, Unit, Weather } from '@/types';
-import WeatherIcon from '@/components/Weather/WeatherIcon';
 import { useTranslation } from 'react-i18next';
 import { units } from '@/constants';
+import { formatTime } from '@/utils';
+import Time from '../Time';
 
 interface Props {
   current: Weather['current'];
   unit: Unit;
-  locationName: Location['localNames'];
-  timeZone: string;
+  location: Location;
 }
 
-const CurrentWeather = ({ current, locationName, timeZone, unit }: Props) => {
+const CurrentWeather = ({ current, location, unit }: Props) => {
   const { t, i18n } = useTranslation();
 
   const {
@@ -18,30 +18,30 @@ const CurrentWeather = ({ current, locationName, timeZone, unit }: Props) => {
     feelsLike,
     windSpeed,
     weather: { description, icon },
+    dt,
   } = current;
 
   return (
-    <article className="w-full rounded bg-secondary p-5">
-      <header className="flex justify-between gap-10">
+    <article className="flex h-fit min-h-[11.25rem] w-full flex-col rounded bg-secondary p-5">
+      <header className="xs:flex-row flex flex-1 flex-col justify-between gap-4 sm:gap-10">
         <p className="text-5xl font-medium">{now}°</p>
 
-        <div className="text-right">
-          <h1 className="text-2xl">{locationName[i18n.language]}</h1>
-          <time className="block text-xs" dateTime="">
-            11:45 AM
-          </time>
+        <div className="xs:text-right">
+          <h1 className="mb-1 text-2xl">{location.localNames[i18n.language] ?? location.name}</h1>
+
+          <Time timestamp={dt} />
         </div>
       </header>
 
-      <ul className="mt-3 grid grid-cols-[2fr_1fr] items-center text-sm font-extralight text-secondary-foreground">
+      <ul className="xs:grid-cols-[2fr_1fr] xs:gap-0 mt-3 grid grid-cols-1 items-center gap-1 text-sm font-extralight text-secondary-foreground">
         <li className="flex items-center">
           <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" className="w-12" />
           {description}
         </li>
 
-        <li className="text-right">
+        <li className="xs:text-right">
           <p className="font-normal text-foreground">
-            {windSpeed} {t('common.m/s')}
+            {windSpeed} {t(unit === 'metric' ? 'common.m/s' : 'common.m/h')}
           </p>
         </li>
 
@@ -49,7 +49,7 @@ const CurrentWeather = ({ current, locationName, timeZone, unit }: Props) => {
           {t('common.feelLike')}: {feelsLike} {units[unit].label}
         </li>
 
-        <li className="text-right">
+        <li className="xs:text-right">
           {min}° {t('common.to')} {max}°
         </li>
       </ul>

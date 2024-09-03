@@ -49,8 +49,8 @@ class LocationService {
     return {
       lat: data.lat,
       lon: data.lon,
-      timeZone: data.timezone,
       current: {
+        dt: data.current.dt,
         feelsLike: Math.round(data.current.feels_like),
         windSpeed: data.current.wind_speed,
         temp: {
@@ -63,6 +63,14 @@ class LocationService {
           description: data.current.weather.at(0)!.description,
         },
       },
+      hourly: [0, 3, 6, 9, 12, 15, 18, 21].map((index) => ({
+        dt: data.hourly[index].dt,
+        temp: Math.round(data.hourly[index].temp),
+        weather: {
+          icon: data.hourly[index].weather.at(0)!.icon,
+          description: data.hourly[index].weather.at(0)!.description,
+        },
+      })),
     };
   };
 }

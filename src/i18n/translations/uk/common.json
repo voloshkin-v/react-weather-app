@@ -1,9 +1,14 @@
 {
-  "otherCities": "Інші великі міста",
+  "largeCities": "Інші великі міста",
+  "hourly": "Погодинний прогноз погоди",
+  "daily": "5-денний прогноз",
   "geolocateButton": "Моя локація",
   "feelLike": "Відчувається як",
-  "localNotAvailable": "Назва відсутня",
   "nothingFound": "Нічого не знайдено",
+  "loading": "Завантаження...",
+  "searchPlaceholder": "Шукати місто...",
+  "localNotAvailable": "Назва відсутня",
   "to": "до",
-  "m/s": "м/с"
+  "m/s": "м/с",
+  "m/h": "м/г"
 }

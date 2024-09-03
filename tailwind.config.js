@@ -6,8 +6,11 @@ export default {
       container: {
         center: true,
         screens: {
-          DEFAULT: '80rem',
+          DEFAULT: '85rem',
         },
+      },
+      screens: {
+        xs: '375px',
       },
       colors: {
         background: '#030616',

@@ -7,8 +7,8 @@ export type Unit = keyof typeof units;
 export interface Weather {
   lat: number;
   lon: number;
-  timeZone: string;
   current: {
+    dt: number;
     feelsLike: number;
     windSpeed: number;
     temp: {
@@ -21,6 +21,14 @@ export interface Weather {
       description: string;
     };
   };
+  hourly: {
+    dt: number;
+    temp: number;
+    weather: {
+      icon: string;
+      description: string;
+    };
+  }[];
 }
 
 export interface Location {

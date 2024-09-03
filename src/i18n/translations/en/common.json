@@ -1,9 +1,14 @@
 {
-  "otherCities": "Other large cities",
+  "largeCities": "Other large cities",
+  "hourly": "Hourly forecast",
+  "daily": "5-day forecast",
   "geolocateButton": "Geolocate me",
   "feelLike": "Feel like",
   "nothingFound": "Nothing found",
+  "loading": "Loading...",
+  "searchPlaceholder": "Search city...",
   "localNotAvailable": "Local name is not available",
   "to": "to",
-  "m/s": "m/s"
+  "m/s": "m/s",
+  "m/h": "m/h"
 }
