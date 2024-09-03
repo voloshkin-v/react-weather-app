@@ -17,15 +17,14 @@ const initialState: State = {
 };
 
 const init = (state: State): State => {
-  const locationLocalStorage = localStorage.getItem(localStorageKeys.location);
-  const unitLocalStorage = localStorage.getItem(localStorageKeys.unit);
+  const locationLC = localStorage.getItem(localStorageKeys.location);
+  const unitLC = localStorage.getItem(localStorageKeys.unit);
 
-  // FIX fix status if location is already there!
   return {
     ...state,
-    unit: (unitLocalStorage as Unit | null) ?? state.unit,
-    location: locationLocalStorage ? JSON.parse(locationLocalStorage) : state.location,
-    status: locationLocalStorage ? 'pending' : 'idle',
+    unit: (unitLC as Unit | null) ?? state.unit,
+    location: locationLC ? JSON.parse(locationLC) : state.location,
+    status: locationLC ? 'pending' : 'idle',
   };
 };
 
@@ -55,7 +54,12 @@ const WeatherProvider = ({ children }: { children: React.ReactNode }) => {
   }, [location, unit, lang]);
 
   useEffect(() => {
-    localStorage.setItem(localStorageKeys.location, JSON.stringify(location));
+    if (location) {
+      localStorage.setItem(localStorageKeys.location, JSON.stringify(location));
+    } else {
+      localStorage.removeItem(localStorageKeys.location);
+    }
+
     localStorage.setItem(localStorageKeys.unit, unit);
   }, [location, unit]);
 
