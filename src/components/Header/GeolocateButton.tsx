@@ -43,7 +43,7 @@ const GeolocateButton = () => {
     <button
       disabled={isDisabled}
       onClick={handleClick}
-      className="inline-flex h-10 min-w-36 items-center justify-center rounded bg-secondary px-4 py-2 text-sm ring-offset-background transition-colors hover:bg-secondary/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-2 active:bg-secondary/60 disabled:cursor-not-allowed"
+      className="inline-flex h-10 min-w-40 items-center justify-center rounded bg-secondary px-4 py-2 ring-offset-background transition-colors hover:bg-secondary/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-2 active:bg-secondary/60 disabled:cursor-not-allowed"
     >
       {t('common.geolocateButton')}
     </button>
