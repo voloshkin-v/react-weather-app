@@ -1,8 +1,10 @@
-import { Location, Unit, Weather } from '@/types';
 import { useTranslation } from 'react-i18next';
+
+import Time from '@/components/Time';
+import WeatherIcon from '@/components/WeatherIcon';
+
+import { Location, Unit, Weather } from '@/types';
 import { units } from '@/constants';
-import { formatTime } from '@/utils';
-import Time from '../Time';
 
 interface Props {
   current: Weather['current'];
@@ -33,14 +35,13 @@ const CurrentWeather = ({ current, location, unit }: Props) => {
         </div>
       </header>
 
-      <ul className="xs:grid-cols-[2fr_1fr] xs:gap-0 mt-3 grid grid-cols-1 items-center gap-1 text-sm font-extralight text-secondary-foreground">
+      <ul className="xs:grid-cols-[2fr_1fr] xs:gap-0 mt-3 grid grid-cols-1 items-center gap-1 text-sm text-secondary-foreground">
         <li className="flex items-center">
-          <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" className="w-12" />
-          {description}
+          <WeatherIcon icon={icon} description={description} />
         </li>
 
         <li className="xs:text-right">
-          <p className="font-normal text-foreground">
+          <p className="text-foreground">
             {windSpeed} {t(unit === 'metric' ? 'common.m/s' : 'common.m/h')}
           </p>
         </li>
