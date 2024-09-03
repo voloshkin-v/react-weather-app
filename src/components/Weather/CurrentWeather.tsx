@@ -25,7 +25,7 @@ const CurrentWeather = ({ current, location, unit }: Props) => {
 
   return (
     <article className="flex h-fit min-h-[11.25rem] w-full flex-col rounded bg-secondary p-5">
-      <header className="xs:flex-row flex flex-1 flex-col justify-between gap-4 sm:gap-10">
+      <header className="flex flex-1 flex-col justify-between gap-4 xs:flex-row sm:gap-10">
         <p className="text-5xl font-medium">{now}°</p>
 
         <div className="xs:text-right">
@@ -35,7 +35,7 @@ const CurrentWeather = ({ current, location, unit }: Props) => {
         </div>
       </header>
 
-      <ul className="xs:grid-cols-[2fr_1fr] xs:gap-0 mt-3 grid grid-cols-1 items-center gap-1 text-sm text-secondary-foreground">
+      <ul className="mt-3 grid grid-cols-1 items-center gap-1 text-sm text-secondary-foreground xs:grid-cols-[2fr_1fr] xs:gap-0">
         <li className="flex items-center">
           <WeatherIcon icon={icon} description={description} />
         </li>

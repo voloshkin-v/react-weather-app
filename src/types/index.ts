@@ -29,6 +29,17 @@ export interface Weather {
       description: string;
     };
   }[];
+  daily: {
+    dt: number;
+    temp: {
+      min: number;
+      max: number;
+    };
+    weather: {
+      icon: string;
+      description: string;
+    };
+  }[];
 }
 
 export interface Location {

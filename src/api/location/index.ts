@@ -71,6 +71,17 @@ class LocationService {
           description: data.hourly[index].weather.at(0)!.description,
         },
       })),
+      daily: data.daily.map((data) => ({
+        dt: data.dt,
+        temp: {
+          min: Math.round(data.temp.min),
+          max: Math.round(data.temp.max),
+        },
+        weather: {
+          icon: data.weather.at(0)!.icon,
+          description: data.weather.at(0)!.description,
+        },
+      })),
     };
   };
 }

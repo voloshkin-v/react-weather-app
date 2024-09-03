@@ -9,7 +9,7 @@ interface Props {
   hourly: Weather['hourly'];
 }
 
-const HourlyWeather = ({ hourly }: Props) => {
+const Hourly = ({ hourly }: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -18,7 +18,7 @@ const HourlyWeather = ({ hourly }: Props) => {
         {t('common.hourly')}
       </h2>
 
-      <div className="xs:justify-start flex flex-wrap justify-center gap-4">
+      <div className="flex h-full flex-wrap justify-center gap-4 xs:justify-start">
         {hourly.map((data) => (
           <HourlyItem key={data.dt} data={data} />
         ))}
@@ -37,7 +37,7 @@ const HourlyItem = ({ data }: { data: Weather['hourly'][number] }) => {
         description={data.weather.description}
         className={{
           container: 'mb-2 flex-1 flex-col',
-          caption: 'line-clamp-2 min-h-8 text-secondary-foreground',
+          caption: 'line-clamp-2 min-h-8',
         }}
       />
 
@@ -46,4 +46,4 @@ const HourlyItem = ({ data }: { data: Weather['hourly'][number] }) => {
   );
 };
 
-export default HourlyWeather;
+export default Hourly;

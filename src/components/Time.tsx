@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { cn } from '@/utils';
+import { cn, getDate } from '@/utils';
 
 interface Props {
   timestamp: number;
@@ -9,7 +9,7 @@ interface Props {
 const Time = ({ timestamp, className = '' }: Props) => {
   const { i18n } = useTranslation();
 
-  const date = new Date(timestamp * 1000);
+  const date = getDate(timestamp);
   const formattedTime = new Intl.DateTimeFormat(i18n.language, {
     hour: '2-digit',
     minute: '2-digit',

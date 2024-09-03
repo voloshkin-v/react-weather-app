@@ -20,10 +20,12 @@ const init = (state: State): State => {
   const locationLocalStorage = localStorage.getItem(localStorageKeys.location);
   const unitLocalStorage = localStorage.getItem(localStorageKeys.unit);
 
+  // FIX fix status if location is already there!
   return {
     ...state,
     unit: (unitLocalStorage as Unit | null) ?? state.unit,
     location: locationLocalStorage ? JSON.parse(locationLocalStorage) : state.location,
+    status: locationLocalStorage ? 'pending' : 'idle',
   };
 };
 
