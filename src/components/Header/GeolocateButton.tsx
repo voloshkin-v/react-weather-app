@@ -13,8 +13,6 @@ const GeolocateButton = () => {
     return !navigator.geolocation ? 'error' : 'idle';
   });
 
-  const isDisabled = status === 'error' || status === 'pending';
-
   const handleClick = () => {
     setStatus('pending');
 
@@ -41,7 +39,7 @@ const GeolocateButton = () => {
 
   return (
     <button
-      disabled={isDisabled}
+      disabled={status === 'pending'}
       onClick={handleClick}
       className="inline-flex h-10 min-w-40 items-center justify-center rounded bg-secondary px-4 py-2 ring-offset-background transition-colors hover:bg-secondary/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-2 active:bg-secondary/60 disabled:cursor-not-allowed"
     >

@@ -31,16 +31,15 @@ const DailyItem = ({ data }: { data: Weather['daily'][number] }) => {
   const { t, i18n } = useTranslation();
 
   const date = getDate(data.dt);
-  const day = new Intl.DateTimeFormat(i18n.language, { weekday: 'long' }).format(date);
+  const formattedDate = new Intl.DateTimeFormat(i18n.language, { weekday: 'long' }).format(date);
 
   const isToday = date.toDateString() === new Date().toDateString();
 
   return (
-    <article
-      key={data.dt}
-      className="flex flex-col items-start gap-4 rounded bg-secondary p-4 md:flex-row md:items-center md:gap-10"
-    >
-      <h3 className="md:flex-1">{isToday ? t('common.today') : day[0].toUpperCase() + day.slice(1)}</h3>
+    <article className="flex flex-col items-start gap-4 rounded bg-secondary p-4 md:flex-row md:items-center md:gap-10">
+      <h3 className="md:flex-1">
+        {isToday ? t('common.today') : formattedDate[0].toUpperCase() + formattedDate.slice(1)}
+      </h3>
 
       <WeatherIcon
         icon={data.weather.icon}

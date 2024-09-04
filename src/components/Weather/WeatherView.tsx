@@ -1,7 +1,7 @@
 import CurrentWeather from '@/components/Weather/CurrentWeather';
 import Daily from '@/components/Weather/Daily';
 import Hourly from '@/components/Weather/Hourly';
-import OtherLocations from '@/components/Intro/Locations/OtherLocations';
+import OtherLocations from '@/components/Weather/Locations/OtherLocations';
 
 import { useWeather } from '@/context/Weather';
 

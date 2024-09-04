@@ -1,0 +1,37 @@
+{
+  "locations": [
+    {
+      "name": "New York County",
+      "localNames": {
+        "en": "New York",
+        "uk": "Нью-Йорк"
+      },
+      "lat": 40.7127281,
+      "lon": -74.0060152,
+      "country": "US",
+      "state": "New York"
+    },
+    {
+      "name": "Madrid",
+      "localNames": {
+        "uk": "Мадрид",
+        "en": "Madrid"
+      },
+      "lat": 40.4167047,
+      "lon": -3.7035825,
+      "country": "ES",
+      "state": "Community of Madrid"
+    },
+    {
+      "name": "London",
+      "localNames": {
+        "en": "London",
+        "uk": "Лондон"
+      },
+      "lat": 51.5073219,
+      "lon": -0.1276474,
+      "country": "GB",
+      "state": "England"
+    }
+  ]
+}
