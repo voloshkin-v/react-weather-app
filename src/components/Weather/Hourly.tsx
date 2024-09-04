@@ -29,7 +29,7 @@ const Hourly = ({ hourly }: Props) => {
 
 const HourlyItem = ({ data }: { data: Weather['hourly'][number] }) => {
   return (
-    <article className="flex flex-shrink-0 basis-24 flex-col items-center rounded bg-secondary px-2 py-5 text-center text-xs">
+    <article className="flex h-fit flex-shrink-0 basis-24 flex-col items-center rounded bg-secondary px-2 py-5 text-center text-xs">
       <Time timestamp={data.dt} />
 
       <WeatherIcon

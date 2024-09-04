@@ -10,7 +10,7 @@ const WeatherView = () => {
   if (!weather || !location) return null;
 
   return (
-    <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-[25rem_1fr]">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[25rem_1fr]">
       <CurrentWeather location={location} current={weather.current} unit={unit} />
       <Hourly hourly={weather.hourly} />
       <OtherLocations />

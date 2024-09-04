@@ -12,7 +12,7 @@ const App = () => {
     <div className="flex min-h-svh flex-col">
       <Header />
 
-      <main className="container flex flex-1 p-4">
+      <main className="container flex-1 p-4">
         {status === 'idle' && <p>Intro</p>}
         {status === 'pending' && <Spinner />}
         {status === 'error' && <Error />}

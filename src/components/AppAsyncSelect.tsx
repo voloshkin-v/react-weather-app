@@ -1,7 +1,6 @@
 import type { GroupBase } from 'react-select';
 import AsyncSelect, { type AsyncProps } from 'react-select/async';
 import debounce from 'debounce-promise';
-import { locationService } from '@/api/location';
 
 /**
  * Built on top of AsyncSelect. Should be used within the app
@@ -13,6 +12,7 @@ const AppAsyncSelect = <Option, IsMulti extends boolean = false, Group extends G
   const wait = 1000;
   const debouncedLoadOptions = debounce(loadOptions!, wait);
 
+  // @ts-expect-error temporary fix
   return <AsyncSelect loadOptions={debouncedLoadOptions} cacheOptions isClearable {...props} />;
 };
 
