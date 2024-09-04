@@ -44,12 +44,12 @@ const DailyItem = ({ data }: { data: Weather['daily'][number] }) => {
       <WeatherIcon
         icon={data.weather.icon}
         description={data.weather.description}
-        className={{ container: 'md:flex-[2]' }}
+        className={{ container: 'md:flex-[1]' }}
       />
 
-      <div className="flex w-full items-center md:flex-[3]">
-        {data.temp.min}° - {data.temp.max}°
-      </div>
+      <p className="text-right md:flex-[2]">
+        {t('common.min')}: {data.temp.min}° - {t('common.max')}: {data.temp.max}°
+      </p>
     </article>
   );
 };

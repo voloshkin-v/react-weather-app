@@ -30,6 +30,8 @@ const GeolocateButton = () => {
     };
 
     const onError = (err: GeolocationPositionError) => {
+      alert('Please allow geolocation access');
+
       setStatus('error');
       console.error(`${err.code}, ${err.message}`);
     };
