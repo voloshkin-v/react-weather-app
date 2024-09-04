@@ -20,7 +20,7 @@ const LocationItem = ({ location }: Props) => {
       className="w-full rounded bg-secondary p-5 text-left transition-colors hover:bg-secondary/80 active:bg-secondary/60"
     >
       <p className="text-xs uppercase text-secondary-foreground">{location.country}</p>
-      <h3 className="text-2xl font-medium">{location.localNames[i18n.language]}</h3>
+      <span className="text-2xl font-medium">{location.localNames[i18n.language]}</span>
     </button>
   );
 };

@@ -8,9 +8,9 @@ const OtherLocations = () => {
 
   return (
     <aside aria-labelledby="large-cities-heading">
-      <h1 id="large-cities-heading" className="mb-5 text-xl">
+      <h2 id="large-cities-heading" className="mb-5 text-xl">
         {t('common.popularCities')}
-      </h1>
+      </h2>
 
       <ul className="space-y-6">
         {data.locations.map((location, i) => (

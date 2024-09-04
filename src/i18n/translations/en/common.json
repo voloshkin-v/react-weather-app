@@ -11,5 +11,6 @@
   "to": "to",
   "m/s": "m/s",
   "m/h": "m/h",
-  "today": "Today"
+  "today": "Today",
+  "fetchError": "Oops, something went wrong.."
 }
