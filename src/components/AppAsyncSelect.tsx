@@ -11,7 +11,7 @@ const AppAsyncSelect = <Option, IsMulti extends boolean = false, Group extends G
   ...props
 }: AsyncProps<Option, IsMulti, Group>) => {
   const wait = 1000;
-  const debouncedLoadOptions = debounce(locationService.getCoordsByName, wait);
+  const debouncedLoadOptions = debounce(loadOptions!, wait);
 
   return <AsyncSelect loadOptions={debouncedLoadOptions} cacheOptions isClearable {...props} />;
 };
