@@ -7,7 +7,7 @@ const OtherLocations = () => {
   const { t } = useTranslation();
 
   return (
-    <aside aria-labelledby="large-cities-heading">
+    <aside aria-labelledby="large-cities-heading" className="order-1 lg:order-none">
       <h2 id="large-cities-heading" className="mb-5 text-xl">
         {t('common.popularCities')}
       </h2>
